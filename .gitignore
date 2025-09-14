@@ -1,0 +1,25 @@
+# --- Fichiers et dossiers générés ---
+target/
+out/
+build/
+*.class
+*.jar
+*.war
+*.ear
+
+# --- IntelliJ IDEA ---
+.idea/
+*.iml
+
+# --- OS / divers ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+
+# --- Config sensible ---
+*.properties
+*.yml
+*.yaml
+!src/main/resources/*.properties
