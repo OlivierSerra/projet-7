@@ -2,14 +2,48 @@ package com.nnk.springboot.domain;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 
 @Entity
 @Table(name = "curvepoint")
 public class CurvePoint {
-    // TODO: Map columns in data table CURVEPOINT with corresponding java fields
+
+    @Id
+    private Integer id;          // PK technique
+
+    @Column(name = "curve_id")
+    private Integer curveId;     // identifiant métier (1er param du constructeur)
+
+    @Column(name = "term")
+    private double term;
+
+    @Column(name = "curve_value") // évite le mot réservé H2 "value"
+    private double value;
+
+    public CurvePoint() {
+        // requis par JPA
+    }
+
+    // ====> constructeur attendu par le test
+    public CurvePoint(Integer id, double term, double value) {
+        this.id = id;
+        this.term = term;
+        this.value = value;
+    }
+
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+
+    public Integer getCurveId() { return curveId; }
+    public void setCurveId(Integer curveId) { this.curveId = curveId; }
+
+    public double getTerm() { return term; }
+    public void setTerm(double term) { this.term = term; }
+
+    public double getValue() { return value; }
+    public void setValue(double value) { this.value = value; }
 }
