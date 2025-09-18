@@ -35,14 +35,30 @@ public class CurvePoint {
         this.value = value;
     }
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    //getters & setters
 
-    public Integer getCurveId() { return curveId; }
-    public void setCurveId(Integer curveId) { this.curveId = curveId; }
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    public double getTerm() { return term; }
-    public void setTerm(double term) { this.term = term; }
+    public Integer getCurveId() {
+        return curveId;
+    }
+
+    public void setCurveId(Integer curveId) {
+        this.curveId = curveId;
+    }
+
+    public double getTerm() {
+        return term;
+    }
+
+    public void setTerm(double term) {
+        this.term = term;
+    }
 
     public double getValue() { return value; }
     public void setValue(double value) { this.value = value; }

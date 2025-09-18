@@ -32,6 +32,10 @@ public class BidList {
         return bidListId;
     }
 
+    public void setBidListId(Integer bidListId) {
+        this.bidListId = bidListId;
+    }
+
     public String getAccount() {
         return account;
     }
