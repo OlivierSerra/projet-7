@@ -40,6 +40,7 @@ public class CurvePoint {
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -60,6 +61,12 @@ public class CurvePoint {
         this.term = term;
     }
 
-    public double getValue() { return value; }
-    public void setValue(double value) { this.value = value; }
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
 }

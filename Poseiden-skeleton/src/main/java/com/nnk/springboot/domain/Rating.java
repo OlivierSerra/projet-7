@@ -11,9 +11,8 @@ public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String moodysRating;
-    private String sandPRating;
+    private String sandPrating;
     private String fitchRating;
     private int orderNumber;
 
@@ -22,24 +21,48 @@ public class Rating {
     }
 
     // attendu par le test: (String, String, String, int)
-    public Rating(String moodysRating, String sandPRating, String fitchRating, int orderNumber) {
+    public Rating(String moodysRating, String sandPrating, String fitchRating, int orderNumber) {
         this.moodysRating = moodysRating;
-        this.sandPRating = sandPRating;
+        this.sandPrating = sandPrating;
         this.fitchRating = fitchRating;
         this.orderNumber = orderNumber;
     }
 
     public Integer getId() { return id; }
 
-    public String getMoodysRating() { return moodysRating; }
-    public void setMoodysRating(String moodysRating) { this.moodysRating = moodysRating; }
+    public Integer setId(Integer id) {
+        return id;
+    }
 
-    public String getSandPRating() { return sandPRating; }
-    public void setSandPRating(String sandPRating) { this.sandPRating = sandPRating; }
+    public String getMoodysRating() {
+        return moodysRating;
+    }
 
-    public String getFitchRating() { return fitchRating; }
-    public void setFitchRating(String fitchRating) { this.fitchRating = fitchRating; }
+    public void setMoodysRating(String moodysRating) {
+        this.moodysRating = moodysRating;
+    }
 
-    public int getOrderNumber() { return orderNumber; }
-    public void setOrderNumber(int orderNumber) { this.orderNumber = orderNumber; }
+    public String getSandPrating() {
+        return sandPrating;
+    }
+
+    public void setSandPrating(String sandPrating) {
+        this.sandPrating = sandPrating;
+    }
+
+    public String getFitchRating() {
+        return fitchRating;
+    }
+
+    public void setFitchRating(String fitchRating) {
+        this.fitchRating = fitchRating;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
 }

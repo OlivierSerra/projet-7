@@ -54,12 +54,12 @@ public class BidListController {
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Bid and return list Bid
-        if (result.hasErrors()) {
-            bidList.setBidListId(id);
-            return "bidList/update";
-        }
-            service.update(id, bidList);
-            return "redirect:/bidList/list";
+        BidList existing = service.findById(id);
+        existing.setBidListId(id);
+        existing.setAccount(bidList.getAccount());
+        existing.setType(bidList.getType());
+        existing.setBidQuantity(bidList.getBidQuantity());
+        return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/delete/{id}")
@@ -68,4 +68,5 @@ public class BidListController {
         service.deleteById(id);
         return "redirect:/bidList/list";
     }
+
 }
