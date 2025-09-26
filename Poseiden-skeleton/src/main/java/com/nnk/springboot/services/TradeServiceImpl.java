@@ -1,6 +1,5 @@
 package com.nnk.springboot.services;
 
-;
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.services.TradeService;
 import com.nnk.springboot.repositories.TradeRepository;
@@ -12,7 +11,6 @@ public class TradeServiceImpl implements TradeService{
 
     private final TradeRepository repo;
 
-    @Override
     public TradeServiceImpl(TradeRepository repo) {
         this.repo = repo;
     }

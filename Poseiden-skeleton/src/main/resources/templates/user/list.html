@@ -8,12 +8,16 @@
 </head>
 <body>
 <div class="container">
-	<div class="row">
-		<div class="col-6">
-
-		</div>
-		<div class="col-6 text-right">
-			<a href="/">Home</a>&nbsp;|&nbsp;<a href="/login">Login</a>
+	<div class="navbar">
+		<div class="col-6"></div>
+		<div class="col-6 text-end">
+			<a th:href="@{/}">Home</a>&nbsp;|&nbsp;
+			<a th:href="@{/login}">Login</a>&nbsp;|&nbsp;
+			<a th:href="@{/BidList}">BidList</a>&nbsp;|&nbsp;
+			<a th:href="@{/CurvePoints}">Curve Points</a>&nbsp;|&nbsp;
+			<a th:href="@{/Ratings}">Ratings</a>&nbsp;|&nbsp;
+			<a th:href="@{/Trade}">Trade</a>&nbsp;|&nbsp;
+			<a th:href="@{/Rule}">Rule</a>
 		</div>
 	</div>
 	<div class="row"><h2>User List</h2></div>

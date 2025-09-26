@@ -1,7 +1,7 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.CurvePoint;
-import com.nnk.springboot.services.CurveService;
+import com.nnk.springboot.services.CurvePointService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,11 +15,10 @@ import jakarta.validation.Valid;
 @Controller
 public class CurveController {
     // TODO: Inject Curve Point service
-    private final CurvePoint curvePoint;
-    private final CurveService service;
 
-    public CurveController(CurvePoint curvePoint, CurveService service){
-        this.curvePoint = curvePoint;
+    private final CurvePointService service;
+
+    public CurveController(CurvePointService service){
         this.service = service;
     }
 

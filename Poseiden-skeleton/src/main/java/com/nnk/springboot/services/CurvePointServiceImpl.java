@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CurveServiceImpl implements CurveService{
+public class CurvePointServiceImpl implements CurvePointService {
 
     private final CurvePointRepository repo;
 
-    public CurveServiceImpl(CurvePointRepository repo) {
+    public CurvePointServiceImpl(CurvePointRepository repo) {
         this.repo = repo;
     }
 
