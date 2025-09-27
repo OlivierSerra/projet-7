@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" xmlns:user="http://www.w3.org/1999/xhtml"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
@@ -9,16 +11,18 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col-6">
-			<a href="/bidList/list">Bid List</a>&nbsp;|&nbsp;
-			<a href="/curvePoint/list">Curve Points</a>&nbsp;|&nbsp;
-			<a href="/rating/list">Ratings</a>&nbsp;|&nbsp;
-			<a href="/trade/list">Trade</a>&nbsp;|&nbsp;
-			<a href="/ruleName/list">Rule</a>
-		</div>
 		<div class="col-6 text-right">
-			Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>
-			<form th:action="@{/app-logout}" method="POST">
+			<a th:href="@{/}">Home</a>&nbsp;|&nbsp;
+			<a th:href="@{/login}">Login</a> |&nbsp;
+			<a th:href="@{/bidList/list}">bidList</a> |&nbsp;
+			<a th:href="@{/curvePoint/list}">curvePoint</a> |&nbsp;
+			<a th:href="@{/rating/list}">ratings</a> |&nbsp;
+			<a th:href="@{/ruleName/list}">ruleName</a> |&nbsp;
+			<a th:href="@{/trade/list}">trade</a>
+		</div>
+		<div class="col-6 text-right" sec:authorize="isAuthenticated()">
+			Logged in user: <b sec:authentication="name"></b>
+			<form th:action="@{/app-logout}" method="post">
 				<input type="submit" value="Logout"/>
 			</form>
 		</div>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 
 @Controller
+@RequestMapping("/curvePoint/")
 public class CurveController {
     // TODO: Inject Curve Point service
 
@@ -22,11 +23,17 @@ public class CurveController {
         this.service = service;
     }
 
-    @RequestMapping("/curvePoint/list")
+    @GetMapping
+        public String rootDirect(){
+        return "redirect:/curvePoint/list";
+    }
+
+    @GetMapping("/list")
     public String home(Model model)
     {
+        var allCurves = service.findAll();
         // TODO: find all Curve Point, add to model**
-        model.addAttribute("CurvePoint", service.findAll());
+        model.addAttribute("CurvePoints", allCurves);
         return "curvePoint/list";
     }
 

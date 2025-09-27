@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 
 @Controller
+@RequestMapping("/rating")
 public class RatingController {
     // TODO: Inject Rating service
     private final RatingService service;
@@ -21,20 +22,28 @@ public class RatingController {
         this.service = service;
     }
 
-    @RequestMapping("/rating/list")
+
+    @GetMapping("/list")
     public String home(Model model)
     {
         // TODO: find all Rating, add to model
         model.addAttribute("rating", service.findAll());
         return "rating/list";
     }
-
-    @GetMapping("/rating/add")
+/*
+ @GetMapping("/add")
     public String addRatingFoam(Rating rating) {
         return "rating/add";
     }
 
-    @PostMapping("/rating/validate")
+    */
+        @GetMapping("/add")
+        public String addRatingForm(Model model) {
+            model.addAttribute("rating", new Rating());
+            return "rating/add";
+        }
+
+    @PostMapping("/validate")
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Rating list
         if (result.hasErrors()){
@@ -44,14 +53,14 @@ public class RatingController {
         return "redirect:/rating/list";
     }
 
-    @GetMapping("/rating/update/{id}")
+    @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Rating by Id and to model then show to the form
         model.addAttribute("id ", service.findById(id));
         return "rating/update";
     }
 
-    @PostMapping("/rating/update/{id}")
+    @PostMapping("/update/{id}")
     public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Rating and return Rating list
@@ -64,7 +73,7 @@ public class RatingController {
         return "redirect:/rating/list";
     }
 
-    @GetMapping("/rating/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Rating by Id and delete the Rating, return to Rating list
         service.deleteById(id);
