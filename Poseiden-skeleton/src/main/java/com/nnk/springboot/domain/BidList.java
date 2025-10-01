@@ -13,7 +13,6 @@ public class BidList {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Integer bidListId;
-
     private String account;
     private String type;
     private double bidQuantity;

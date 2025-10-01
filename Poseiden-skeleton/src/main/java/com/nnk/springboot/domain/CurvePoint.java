@@ -13,24 +13,29 @@ import java.sql.Timestamp;
 public class CurvePoint {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;          // PK technique
 
+    @NotNull
     @Column(name = "curve_id")
     private Integer curveId;     // identifiant métier (1er param du constructeur)
 
+    @NotNull
     @Column(name = "term")
     private double term;
 
+    @NotNull
     @Column(name = "curve_value") // évite le mot réservé H2 "value"
     private double value;
+
 
     public CurvePoint() {
         // requis par JPA
     }
 
     // ====> constructeur attendu par le test
-    public CurvePoint(Integer id, double term, double value) {
-        this.id = id;
+    public CurvePoint(Integer curveId, double term, double value) {
+        this.curveId = curveId;
         this.term = term;
         this.value = value;
     }

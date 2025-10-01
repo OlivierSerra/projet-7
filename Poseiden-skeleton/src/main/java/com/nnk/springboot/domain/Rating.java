@@ -30,8 +30,8 @@ public class Rating {
 
     public Integer getId() { return id; }
 
-    public Integer setId(Integer id) {
-        return id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getMoodysRating() {

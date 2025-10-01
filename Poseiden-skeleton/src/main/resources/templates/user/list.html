@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
 <div class="container">
@@ -50,5 +50,8 @@
 		</table>
 	</div>
 </div>
+	<footer style="position: fixed; bottom: 10px; right: 10px;">
+		<img src="/images/logo.png" alt="Poseidon Capital Solutions" style="width:120px;">
+	</footer>
 </body>
 </html>

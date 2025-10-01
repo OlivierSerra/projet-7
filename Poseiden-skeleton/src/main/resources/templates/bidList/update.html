@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" >
 </head>
 <body>
 <div class="container">
@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="row">
-		<form action="#" th:action="@{/bidList/update/{id}(id=${bidList.bidListId})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
+		<form th:action="@{/bidList/update/{id}(id=${bidList.bidListId})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
 			<div class="form-group">
 				<label for="account" class="col-sm-2 control-label">Account</label>
 				<div class="col-sm-10">
@@ -36,17 +36,24 @@
 				</div>
 			</div>
 
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
 			<div class="form-group">
 				<div class="col-sm-12">
-					<input type="hidden" th:field="*{id}">
-					<a class="btn btn-danger btn-sm" href="/bidList/list">Cancel</a>
+					<input type="hidden" th:field="*{bidListId}">
+					<a class="btn btn-danger btn-sm" th:href="@{/bidList/list}">Cancel</a>
 					<input class="btn btn-primary btn-sm" type="submit" value="Update Bid List">
 				</div>
 			</div>
+
 		</form>
 	</div>
 
 </div>
+
+<footer style="position: fixed; bottom: 10px; right: 10px;">
+	<img src="/images/logo.png" alt="Poseidon Capital Solutions" style="width:120px;">
+</footer>
+
 </body>
 </html>

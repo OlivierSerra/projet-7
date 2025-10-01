@@ -35,8 +35,8 @@ public class RuleNameServicesImpl implements RuleNameService{
         e.setDescription(ruleName.getDescription());
         e.setJson(ruleName.getJson());
         e.setTemplate(ruleName.getTemplate());
-        e.setSQLStr(ruleName.getSQLStr());
-        e.setSQLPart(ruleName.getSQLPart());
+        e.setSqlStr(ruleName.getSqlStr());
+        e.setSqlPart(ruleName.getSqlPart());
         return repo.save(e);
     }
 

@@ -12,27 +12,32 @@ public class Trade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer tradeId;
+    private Integer id;
 
     private String account;
 
     private String type;
 
+    private Integer buyQuantity;
+
     public Trade(){
     }
 
-    public Trade(String account, String type){
+    public Trade(Integer id, String account, String type, Integer buyQuantity){
+        this.id = id;
         this.account = account;
         this.type = type;
+        this.buyQuantity = buyQuantity;
     }
+
 
     //getters and setters
-    public Integer getTradeId() {
-        return tradeId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTradeId(Integer tradeId) {
-        this.tradeId = tradeId;
+    public void setId(Integer Id) {
+        this.id = Id;
     }
 
     public String getAccount() {
@@ -40,6 +45,7 @@ public class Trade {
     }
 
     public void setAccount(String account) {
+
         this.account = account;
     }
 
@@ -48,7 +54,14 @@ public class Trade {
     }
 
     public void setType(String type) {
-        type = type;
+        this.type = type;
     }
 
+    public Integer getBuyQuantity() {
+        return buyQuantity;
+    }
+
+    public void setBuyQuantity(Integer buyQuantity) {
+        this.buyQuantity = buyQuantity;
+    }
 }

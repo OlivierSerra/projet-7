@@ -14,13 +14,17 @@ public class RuleName {
     private Integer id;
 
     @NotBlank(message = "Name is mandatory")
-    private String Name;
+    private String name;
 
-    private String Description;
-    private String Json;
+    private String description;
+    private String json;
     private String template;
-    private String SQLStr;
-    private String SQLPart;
+
+    @Column(name= "sql_str")
+    private String sqlStr;
+
+    @Column (name="sql_Part")
+    private String sqlPart;
 
     public RuleName(){
     }
@@ -34,27 +38,27 @@ public class RuleName {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getJson() {
-        return Json;
+        return json;
     }
 
     public void setJson(String json) {
-        Json = json;
+        this.json = json;
     }
 
     public String getTemplate() {
@@ -65,29 +69,29 @@ public class RuleName {
         this.template = template;
     }
 
-    public String getSQLStr() {
-        return SQLStr;
+    public String getSqlStr() {
+        return sqlStr;
     }
 
-    public void setSQLStr(String SQLStr) {
-        this.SQLStr = SQLStr;
+    public void setSqlStr(String sqlStr) {
+        this.sqlStr = sqlStr;
     }
 
-    public String getSQLPart() {
-        return SQLPart;
+    public String getSqlPart() {
+        return sqlPart;
     }
 
-    public void setSQLPart(String SQLPart) {
-        this.SQLPart = SQLPart;
+    public void setSqlPart(String SqlPart) {
+        this.sqlPart = sqlPart;
     }
 
-    public RuleName(String Name, String Description, String Json, String template, String SQLStr, String SQLPart) {
-        this.Name = Name;
-        this.Description = Description;
-        this.Json = Json;
+    public RuleName(String name, String description, String json, String template, String sqlStr, String sqlPart) {
+        this.name = name;
+        this.description = description;
+        this.json = json;
         this.template = template;
-        this.SQLStr = SQLStr;
-        this.SQLPart = SQLPart;
+        this.sqlStr = sqlStr;
+        this.sqlPart = sqlPart;
     }
 
 }

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" >
 </head>
 <body>
 <div class="container">
@@ -27,7 +27,7 @@
 	</div>
 	<div class="row"><h2>Rule List</h2></div>
 	<div class="row">
-		<a href="/ruleName/add" class="btn btn-primary btn-sm">Add New</a>
+		<a th:href="@{/ruleName/add}" class="btn btn-primary btn-sm">Add New</a>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -48,7 +48,7 @@
 					<td th:text="${ruleName.description}"></td>
 					<td th:text="${ruleName.json}"></td>
 					<td th:text="${ruleName.template}"></td>
-					<td th:text="${ruleName.sql}"></td>
+					<td th:text="${ruleName.sqlStr}"></td>
 					<td th:text="${ruleName.sqlPart}"></td>
 					<td style="width: 15%" class="text-center">
 						<a th:href="@{/ruleName/update/{id}(id=${ruleName.id})}">Edit</a>&nbsp;|&nbsp;
@@ -59,5 +59,8 @@
 		</table>
 	</div>
 </div>
+	<footer style="position: fixed; bottom: 10px; right: 10px;">
+		<img src="/images/logo.png" alt="Poseidon Capital Solutions" style="width:120px;">
+	</footer>
 </body>
 </html>

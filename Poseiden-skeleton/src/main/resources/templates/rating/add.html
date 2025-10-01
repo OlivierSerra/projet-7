@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
@@ -40,11 +40,12 @@
 			<div class="form-group">
 				<label for="orderNumber" class="col-sm-2 control-label">Order</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{orderNumber}" id="orderNumber" placeholder="FitchRating" class="col-4">
+					<input type="text" th:field="*{orderNumber}" id="orderNumber" placeholder="Order" class="col-4">
 					<p class="text-danger" th:if="${#fields.hasErrors('orderNumber')}" th:errors="*{orderNumber}"></p>
 				</div>
 			</div>
 
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
 			<div class="form-group">
 				<div class="col-sm-12">
@@ -56,5 +57,8 @@
 	</div>
 
 </div>
+	<footer style="position: fixed; bottom: 10px; right: 10px;">
+		<img src="/images/logo.png" alt="Poseidon Capital Solutions" style="width:120px;">
+	</footer>
 </body>
 </html>

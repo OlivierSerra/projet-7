@@ -1,5 +1,6 @@
 package com.nnk.springboot.controllers;
 
+import ch.qos.logback.classic.Logger;
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.services.RuleNameService;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 
 @Controller
+@RequestMapping("/ruleName")
 public class RuleNameController {
     // TODO: Inject RuleName service
     private final RuleNameService ruleNameService;
@@ -21,20 +23,20 @@ public class RuleNameController {
         this.ruleNameService = ruleNameService;
     }
 
-    @RequestMapping("/ruleName/list")
+    @GetMapping("/list")
     public String home(Model model)
     {
         // TODO: find all RuleName, add to model
-        model.addAttribute("ruleName", ruleNameService.findAll());
+        model.addAttribute("ruleNames", ruleNameService.findAll());
         return "ruleName/list";
     }
 
-    @GetMapping("/ruleName/add")
+    @GetMapping("/add")
     public String addRuleForm(RuleName bid) {
         return "ruleName/add";
     }
 
-    @PostMapping("/ruleName/validate")
+    @PostMapping("/validate")
     public String validate(@Valid RuleName ruleName, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return RuleName list
         if (result.hasErrors()) {
@@ -44,14 +46,14 @@ public class RuleNameController {
         return "redirect:/ruleName/list";
     }
 
-    @GetMapping("/ruleName/update/{id}")
+    @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get RuleName by Id and to model then show to the form
         model.addAttribute("id", ruleNameService.findById(id));
         return "ruleName/update";
     }
 
-    @PostMapping("/ruleName/update/{id}")
+    @PostMapping("/update/{id}")
     public String updateRuleName(@PathVariable("id") Integer id, @Valid RuleName ruleName,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update RuleName and return RuleName list
@@ -61,12 +63,13 @@ public class RuleNameController {
         e.setDescription(ruleName.getDescription());
         e.setJson(ruleName.getJson());
         e.setTemplate(ruleName.getTemplate());
-        e.setSQLStr(ruleName.getSQLStr());
-        e.setSQLPart(ruleName.getSQLPart());
+        e.setSqlStr(ruleName.getSqlStr());
+        e.setSqlPart(ruleName.getSqlPart());
+        ruleNameService.save(e);
         return "redirect:/ruleName/list";
     }
 
-    @GetMapping("/ruleName/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteRuleName(@PathVariable("id") Integer id, Model model) {
         // TODO: Find RuleName by Id and delete the RuleName, return to Rule list
         ruleNameService.deleteById(id);

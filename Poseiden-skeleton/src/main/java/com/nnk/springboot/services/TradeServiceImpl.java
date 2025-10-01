@@ -33,9 +33,10 @@ public class TradeServiceImpl implements TradeService{
     @Override
     public Trade update(Integer id, Trade trade){
         Trade e = findById(id);
-        e.setTradeId(trade.getTradeId());
+        e.setId(trade.getId());
         e.setAccount(trade.getAccount());
         e.setType(trade.getType());
+        e.setBuyQuantity(trade.getBuyQuantity());
         return repo.save(e);
     }
 

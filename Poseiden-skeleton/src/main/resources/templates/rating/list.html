@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+	  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" >
 </head>
 <body>
 <div class="container">
@@ -40,12 +40,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="rating : ${ratings}">
+				<tr th:each="rating : ${rating}">
 					<td style="width: 10%" th:text="${rating.id}"></td>
 					<td th:text="${rating.moodysRating}"></td>
 					<td th:text="${rating.sandPrating}"></td>
 					<td th:text="${rating.fitchRating}"></td>
-					<td th:text="${rating.order}"></td>
+					<td th:text="${rating.orderNumber}"></td>
 					<td style="width: 15%" class="text-center">
 						<a th:href="@{/rating/update/{id}(id=${rating.id})}">Edit</a>&nbsp;|&nbsp;
 						<a th:href="@{/rating/delete/{id}(id=${rating.id})}">Delete</a>
@@ -55,5 +55,10 @@
 		</table>
 	</div>
 </div>
+
+	<footer style="position: fixed; bottom: 10px; right: 10px;">
+		<img src="/images/logo.png" alt="Poseidon Capital Solutions" style="width:120px;">
+	</footer>
+
 </body>
 </html>
