@@ -49,8 +49,7 @@ public class TradeController {
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Trade by Id and to model then show to the form
-        Trade existing = tradeService.findById(id);
-        model.addAttribute("trade", tradeService.findAll() );
+        model.addAttribute("trade", tradeService.findById(id) );
         return "trade/update";
     }
 
@@ -58,6 +57,9 @@ public class TradeController {
     public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Trade and return Trade list
+        if (result.hasErrors()) {                            // ✅ 2) renvoyer le formulaire si erreurs
+            return "trade/update";
+        }
         Trade e = tradeService.findById(id);
         e.setId(trade.getId());
         e.setAccount(trade.getAccount());

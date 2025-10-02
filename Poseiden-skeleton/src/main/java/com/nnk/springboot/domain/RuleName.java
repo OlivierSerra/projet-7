@@ -23,7 +23,7 @@ public class RuleName {
     @Column(name= "sql_str")
     private String sqlStr;
 
-    @Column (name="sql_Part")
+    @Column (name="sql_part")
     private String sqlPart;
 
     public RuleName(){
@@ -81,7 +81,7 @@ public class RuleName {
         return sqlPart;
     }
 
-    public void setSqlPart(String SqlPart) {
+    public void setSqlPart(String sqlPart) {
         this.sqlPart = sqlPart;
     }
 

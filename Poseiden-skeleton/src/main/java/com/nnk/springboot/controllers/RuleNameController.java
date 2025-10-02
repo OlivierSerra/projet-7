@@ -32,13 +32,14 @@ public class RuleNameController {
     }
 
     @GetMapping("/add")
-    public String addRuleForm(RuleName bid) {
+    public String addRuleForm(Model model) {
+        model.addAttribute("ruleName", new RuleName());
         return "ruleName/add";
     }
 
     @PostMapping("/validate")
     public String validate(@Valid RuleName ruleName, BindingResult result, Model model) {
-        // TODO: check data valid and save to db, after saving return RuleName list
+        // TODO: check data valid and save toa db, after saving return RuleName list
         if (result.hasErrors()) {
             return "ruleName/add";
         }
@@ -49,7 +50,7 @@ public class RuleNameController {
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get RuleName by Id and to model then show to the form
-        model.addAttribute("id", ruleNameService.findById(id));
+        model.addAttribute("ruleName", ruleNameService.findById(id));
         return "ruleName/update";
     }
 
@@ -57,8 +58,8 @@ public class RuleNameController {
     public String updateRuleName(@PathVariable("id") Integer id, @Valid RuleName ruleName,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update RuleName and return RuleName list
+        if (result.hasErrors()) return "ruleName/update";
         RuleName e = ruleNameService.findById(id);
-        e.setId(ruleName.getId());
         e.setName(ruleName.getName());
         e.setDescription(ruleName.getDescription());
         e.setJson(ruleName.getJson());
