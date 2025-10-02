@@ -17,10 +17,10 @@ import jakarta.validation.Valid;
 public class CurveController {
     // TODO: Inject Curve Point service
 
-    private final CurvePointService service;
+    private final CurvePointService curvePointService;
 
-    public CurveController(CurvePointService service){
-        this.service = service;
+    public CurveController(CurvePointService curvePointService){
+        this.curvePointService = curvePointService;
     }
 
     @GetMapping
@@ -31,7 +31,7 @@ public class CurveController {
     @GetMapping("/list")
     public String home(Model model)
     {
-        var allCurves = service.findAll();
+        var allCurves = curvePointService.findAll();
         // TODO: find all Curve Point, add to model**
         model.addAttribute("curvePoints", allCurves);
         return "curvePoint/list";
@@ -48,34 +48,34 @@ public class CurveController {
         if (result.hasErrors()){
             return "curvePoint/add";
         }
-        service.save(curvePoint);
+        curvePointService.save(curvePoint);
         return "redirect:/curvePoint/list";
     }
 
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get CurvePoint by Id and to model then show to the form**
-        model.addAttribute("curvePoint", service.findById(id));
-        return "/curvePoint/update";
+        model.addAttribute("curvePoint", curvePointService.findById(id));
+        return "curvePoint/update";
     }
 
     @PostMapping("/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Curve and return Curve list
-        CurvePoint existing = service.findById(id);
-        existing.setId(curvePoint.getId());
+        if (result.hasErrors()) return "/curvePoint/update";
+        CurvePoint existing = curvePointService.findById(id);
         existing.setCurveId(curvePoint.getCurveId());
         existing.setTerm(curvePoint.getTerm());
         existing.setValue(curvePoint.getValue());
-        service.save(existing);
+        curvePointService.save(existing);
         return "redirect:/curvePoint/list";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Curve by Id and delete the Curve, return to Curve list
-        service.deleteById(id);
+        curvePointService.deleteById(id);
         return "redirect:/curvePoint/list";
     }
 }

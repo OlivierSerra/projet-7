@@ -36,7 +36,7 @@ public class RatingServiceImpl implements RatingService {
         Rating e = findById(id);
         e.setId(rating.getId());
         e.setMoodysRating(rating.getMoodysRating());
-        e.setSandPrating(rating.getSandPrating());
+        e.setSandPRating(rating.getSandPRating());
         e.setFitchRating(rating.getFitchRating());
         e.setOrderNumber(rating.getOrderNumber());
         return repo.save(e);

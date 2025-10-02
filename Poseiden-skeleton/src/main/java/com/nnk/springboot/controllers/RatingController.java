@@ -16,10 +16,10 @@ import jakarta.validation.Valid;
 @RequestMapping("/rating")
 public class RatingController {
     // TODO: Inject Rating service
-    private final RatingService service;
+    private final RatingService ratingService;
 
-    public RatingController(RatingService service){
-        this.service = service;
+    public RatingController(RatingService ratingService){
+        this.ratingService = ratingService;
     }
 
 
@@ -27,7 +27,7 @@ public class RatingController {
     public String home(Model model)
     {
         // TODO: find all Rating, add to model
-        model.addAttribute("rating", service.findAll());
+        model.addAttribute("ratings", ratingService.findAll());
         return "rating/list";
     }
 /*
@@ -49,14 +49,14 @@ public class RatingController {
         if (result.hasErrors()){
         return "rating/add";
         }
-        service.save(rating);
+        ratingService.save(rating);
         return "redirect:/rating/list";
     }
 
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Rating by Id and to model then show to the form
-        model.addAttribute("id ", service.findById(id));
+        model.addAttribute("rating", ratingService.findById(id));
         return "rating/update";
     }
 
@@ -64,19 +64,20 @@ public class RatingController {
     public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Rating and return Rating list
-        Rating existing = service.findById(id);
-        existing.setMoodysRating(existing.getMoodysRating());
-        existing.setSandPrating(existing.getSandPrating());
-        existing.setFitchRating(existing.getFitchRating());
-        existing.setOrderNumber(existing.getOrderNumber());
-        service.save(existing);
+        if (result.hasErrors()) return "rating/update";
+        Rating existing = ratingService.findById(id);
+        existing.setMoodysRating(rating.getMoodysRating());
+        existing.setSandPRating(rating.getSandPRating());
+        existing.setFitchRating(rating.getFitchRating());
+        existing.setOrderNumber(rating.getOrderNumber());
+        ratingService.save(existing);
         return "redirect:/rating/list";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Rating by Id and delete the Rating, return to Rating list
-        service.deleteById(id);
+        ratingService.deleteById(id);
         return "redirect:/rating/list";
     }
 }

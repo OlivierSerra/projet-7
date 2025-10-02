@@ -12,7 +12,9 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String moodysRating;
-    private String sandPrating;
+
+    @Column(name = "sandprating")
+    private String sandPRating;
     private String fitchRating;
     private int orderNumber;
 
@@ -21,9 +23,9 @@ public class Rating {
     }
 
     // attendu par le test: (String, String, String, int)
-    public Rating(String moodysRating, String sandPrating, String fitchRating, int orderNumber) {
+    public Rating(String moodysRating, String sandPRating, String fitchRating, int orderNumber) {
         this.moodysRating = moodysRating;
-        this.sandPrating = sandPrating;
+        this.sandPRating = sandPRating;
         this.fitchRating = fitchRating;
         this.orderNumber = orderNumber;
     }
@@ -42,12 +44,12 @@ public class Rating {
         this.moodysRating = moodysRating;
     }
 
-    public String getSandPrating() {
-        return sandPrating;
+    public String getSandPRating() {
+        return sandPRating;
     }
 
-    public void setSandPrating(String sandPrating) {
-        this.sandPrating = sandPrating;
+    public void setSandPRating(String sandPRating) {
+        this.sandPRating = sandPRating;
     }
 
     public String getFitchRating() {
