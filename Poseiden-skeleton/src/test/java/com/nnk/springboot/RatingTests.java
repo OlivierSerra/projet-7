@@ -1,6 +1,7 @@
 package com.nnk.springboot;
 
 import com.nnk.springboot.domain.Rating;
+import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.RatingRepository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,12 +27,35 @@ public class RatingTests {
 		// Save
 		rating = ratingRepository.save(rating);
 		Assert.assertNotNull(rating.getId());
-		Assert.assertTrue(rating.getOrderNumber() == 10);
+
+		Assert.assertEquals(10, rating.getOrderNumber());
+		Assert.assertEquals("Moodys Rating", rating.getMoodysRating());
+		Assert.assertEquals("Sand PRating", rating.getSandPRating());
+		Assert.assertEquals("Fitch Rating", rating.getFitchRating());
+
+		//Read
+		//List<Rating> ratings = ratingRepository.findAll();
+		//Assert.assertTrue(ratings.size() >0);//non null
+
+		Optional<Rating> newIdentifiant = ratingRepository.findById(rating.getId());
+		Assert.assertTrue(newIdentifiant.isPresent());
+		Rating newRating= newIdentifiant.get();
+		Assert.assertEquals("Moodys Rating", newRating.getMoodysRating());
+		Assert.assertEquals("Sand PRating", newRating.getSandPRating());
+		Assert.assertEquals("Fitch Rating", newRating.getFitchRating());
+		Assert.assertEquals(10, newRating.getOrderNumber());
 
 		// Update
 		rating.setOrderNumber(20);
-		rating = ratingRepository.save(rating);
-		Assert.assertTrue(rating.getOrderNumber() == 20);
+		rating.setMoodysRating("Moodys Rating");
+		rating.setSandPRating("Sand PRating");
+		rating.setFitchRating("Fitch Rating");
+		Rating ratingUploaded= ratingRepository.save(rating);
+
+		Assert.assertEquals(20, ratingUploaded.getOrderNumber());
+		Assert.assertEquals("Moodys Rating", ratingUploaded.getMoodysRating());
+		Assert.assertEquals("Sand PRating", ratingUploaded.getSandPRating());
+		Assert.assertEquals("Fitch Rating", ratingUploaded.getFitchRating());
 
 		// Find
 		List<Rating> listResult = ratingRepository.findAll();
@@ -40,7 +64,6 @@ public class RatingTests {
 		// Delete
 		Integer id = rating.getId();
 		ratingRepository.delete(rating);
-		Optional<Rating> ratingList = ratingRepository.findById(id);
-		Assert.assertFalse(ratingList.isPresent());
+		Assert.assertFalse(ratingRepository.findById(id).isPresent());
 	}
 }

@@ -27,12 +27,28 @@ public class TradeTests {
 		// Save
 		trade = tradeRepository.save(trade);
 		Assert.assertNotNull(trade.getId());
-		Assert.assertTrue(trade.getAccount().equals("Trade Account"));
+		Assert.assertEquals("Trade Account", trade.getAccount());
+		Assert.assertEquals("Type", trade.getType());
+		Assert.assertEquals(1, trade.getBuyQuantity().intValue());
+
+		//READ
+		Optional<Trade> newIdentify = tradeRepository.findById(trade.getId());
+		Assert.assertTrue(newIdentify.isPresent());
+
+		Trade tradeUploaded= newIdentify.get();
+		Assert.assertEquals("Trade Account", tradeUploaded.getAccount());
+		Assert.assertEquals("Type", tradeUploaded.getType());
+		Assert.assertEquals(1, tradeUploaded.getBuyQuantity().intValue());
 
 		// Update
 		trade.setAccount("Trade Account Update");
-		trade = tradeRepository.save(trade);
-		Assert.assertTrue(trade.getAccount().equals("Trade Account Update"));
+		trade.setType("Type Update");
+		trade.setBuyQuantity(2);
+
+		Trade newTrade= tradeRepository.save(trade);//lecture après avoir relancé
+		Assert.assertEquals("Trade Account Update", newTrade.getAccount());
+		Assert.assertEquals("Type Update", newTrade.getType());
+		Assert.assertEquals(2, newTrade.getBuyQuantity().intValue());
 
 		// Find
 		List<Trade> listResult = tradeRepository.findAll();
