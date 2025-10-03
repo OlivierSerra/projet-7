@@ -19,10 +19,10 @@ public class Rating {
     private int orderNumber;
 
     public Rating() {
-        // required by JPA
+
     }
 
-    // attendu par le test: (String, String, String, int)
+
     public Rating(String moodysRating, String sandPRating, String fitchRating, int orderNumber) {
         this.moodysRating = moodysRating;
         this.sandPRating = sandPRating;

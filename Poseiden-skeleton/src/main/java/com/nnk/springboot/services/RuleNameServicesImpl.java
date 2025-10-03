@@ -46,6 +46,7 @@ public class RuleNameServicesImpl implements RuleNameService{
     }
 
     public void deleteById(Integer id){
+
         repo.deleteById(id);
     }
 }

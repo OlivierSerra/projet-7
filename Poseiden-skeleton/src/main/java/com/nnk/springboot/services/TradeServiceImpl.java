@@ -12,11 +12,13 @@ public class TradeServiceImpl implements TradeService{
     private final TradeRepository repo;
 
     public TradeServiceImpl(TradeRepository repo) {
+
         this.repo = repo;
     }
 
     @Override
     public List<Trade> findAll(){
+
         return repo.findAll();
     }
 
@@ -27,6 +29,7 @@ public class TradeServiceImpl implements TradeService{
 
     @Override
     public Trade save(Trade trade){
+
         return repo.save(trade);
     }
 
@@ -42,11 +45,11 @@ public class TradeServiceImpl implements TradeService{
 
     @Override
     public void deleteById(Integer id) {
-
+        repo.deleteById(id);
     }
 
     public void delete(Integer id) {
-            repo.deleteById(id);
+
     }
 
 }

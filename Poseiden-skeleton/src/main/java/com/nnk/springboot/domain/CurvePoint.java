@@ -14,26 +14,24 @@ public class CurvePoint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;          // PK technique
+    private Integer id;
 
     @NotNull
     @Column(name = "curve_id")
-    private Integer curveId;     // identifiant métier (1er param du constructeur)
-
+    private Integer curveId;
     @NotNull
     @Column(name = "term")
     private double term;
 
     @NotNull
-    @Column(name = "curve_value") // évite le mot réservé H2 "value"
+    @Column(name = "curve_value")
     private double value;
 
 
     public CurvePoint() {
-        // requis par JPA
+
     }
 
-    // ====> constructeur attendu par le test
     public CurvePoint(Integer curveId, double term, double value) {
         this.curveId = curveId;
         this.term = term;
