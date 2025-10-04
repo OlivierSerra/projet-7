@@ -51,7 +51,6 @@ public class SecurityConfig {
                         .maximumSessions(1)
                 )
                 .csrf(Customizer.withDefaults()); // garde CSRF actif
-
         return http.build();
     }
 

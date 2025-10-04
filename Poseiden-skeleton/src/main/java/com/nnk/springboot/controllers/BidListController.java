@@ -25,7 +25,8 @@ public class BidListController {
     @GetMapping("/list")
     public String home(Model model) {
         // TODO: call service find all bids to show to the view
-        model.addAttribute("bidLists", bidListService.findAll());
+        model.addAttribute("bidLists",
+                bidListService.findAll());
         return "bidList/list";
     }
 
@@ -36,7 +37,8 @@ public class BidListController {
     }
 
     @PostMapping("/validate")
-    public String validate(@Valid BidList bid, BindingResult result, Model model) {
+    public String validate(@Valid BidList bid, BindingResult result,
+                           Model model) {
         // TODO: check data valid and save to db, after saving return bid list
         if(result.hasErrors()) {
             return "bidList/add";
