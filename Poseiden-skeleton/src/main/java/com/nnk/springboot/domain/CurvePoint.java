@@ -5,7 +5,10 @@ import org.hibernate.validator.constraints.Length;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 
 @Entity
@@ -27,15 +30,26 @@ public class CurvePoint {
     @Column(name = "curve_value")
     private double value;
 
+    @NotNull
+    @Column(name = "crationDate")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate creationDate;
+
+    @NotNull
+    @Column(name = "asOfDate")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate asOfDate;
+
 
     public CurvePoint() {
 
     }
 
-    public CurvePoint(Integer curveId, double term, double value) {
+    public CurvePoint(Integer curveId, double term, double value, LocalDate creationDate) {
         this.curveId = curveId;
         this.term = term;
         this.value = value;
+        this.creationDate = creationDate;
     }
 
     //getters & setters
@@ -72,4 +86,19 @@ public class CurvePoint {
         this.value = value;
     }
 
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public LocalDate getAsOfDate() {
+        return asOfDate;
+    }
+
+    public void setAsOfDate(LocalDate asOfDate) {
+        this.asOfDate = asOfDate;
+    }
 }

@@ -12,7 +12,6 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String moodysRating;
-
     @Column(name = "sandprating")
     private String sandPRating;
     private String fitchRating;

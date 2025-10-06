@@ -13,7 +13,13 @@ public class User {
     private String username;
     @NotBlank(message = "Password is mandatory")
     private String password;
+    @NotBlank(message = "FullName is mandatory")
+    private String fullname;
+    @NotBlank(message = "Role is mandatory")
+    private String role;
 
+
+    //constructeurs
     public User() {
     }
 
@@ -24,11 +30,8 @@ public class User {
         this.role = role;
     }
 
-    @NotBlank(message = "FullName is mandatory")
-    private String fullname;
-    @NotBlank(message = "Role is mandatory")
-    private String role;
 
+//getters & setters
     public Integer getId() {
         return id;
     }

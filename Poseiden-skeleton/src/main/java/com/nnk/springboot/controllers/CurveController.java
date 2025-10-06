@@ -68,6 +68,8 @@ public class CurveController {
         existing.setCurveId(curvePoint.getCurveId());
         existing.setTerm(curvePoint.getTerm());
         existing.setValue(curvePoint.getValue());
+        existing.setCreationDate(curvePoint.getCreationDate());
+        existing.setAsOfDate(curvePoint.getAsOfDate());
         curvePointService.save(existing);
         return "redirect:/curvePoint/list";
     }

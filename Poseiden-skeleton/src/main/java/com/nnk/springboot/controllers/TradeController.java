@@ -2,6 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.services.TradeService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/trade")
@@ -65,6 +69,23 @@ public class TradeController {
         e.setAccount(trade.getAccount());
         e.setType(trade.getType());
         e.setBuyQuantity(trade.getBuyQuantity());
+        e.setSellQuantity(trade.getSellQuantity());
+        e.setBuyPrice(trade.getBuyPrice());
+        e.setSellPrice(trade.getSellPrice());
+        e.setBenchmark(trade.getBenchmark());
+        e.setTradeDate(trade.getTradeDate());
+        e.setSecurity(trade.getSecurity());
+        e.setStatus(trade.getStatus());
+        e.setTradeDate(trade.getTradeDate());
+        e.setBook(trade.getBook());
+        e.setCreationName(trade.getCreationName());
+        e.setCreationDate(trade.getCreationDate());
+        e.setRevisionName(trade.getRevisionName());
+        e.setRevisionDate(trade.getRevisionDate());
+        e.setDealName(trade.getDealName());;
+        e.setDealType(trade.getDealType());
+        e.setSourceListId(trade.getSourceListId());
+        e.setSide(trade.getSide());
         tradeService.save(e);
         return "redirect:/trade/list";
     }

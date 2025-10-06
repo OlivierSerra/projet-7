@@ -41,16 +41,41 @@ public class BidList {
     private String sourceListId;
     private String side;
 
-    //Constructeurs
-    public BidList() {
-    }
+    //Constructeurs*
+    public BidList(){}
 
-    public BidList(String account, String type,
-                   double bidQuantity) {
+
+    public BidList(Integer bidListId, String account, String type, double bidQuantity,
+                   double askQuantity, double bid, double ask, String benchmark,
+                   LocalDate bidListDate, String commentary, String security, String status,
+                   String trader, String book, String creationName, LocalDate creationDate,
+                   String revisionName, LocalDate revisionDate, String dealName, String dealType,
+                   String sourceListId, String side) {
+        this.bidListId = bidListId;
         this.account = account;
         this.type = type;
         this.bidQuantity = bidQuantity;
+        this.askQuantity = askQuantity;
+        this.bid = bid;
+        this.ask = ask;
+        this.benchmark = benchmark;
+        this.bidListDate = bidListDate;
+        this.commentary = commentary;
+        this.security = security;
+        this.status = status;
+        this.trader = trader;
+        this.book = book;
+        this.creationName = creationName;
+        this.creationDate = creationDate;
+        this.revisionName = revisionName;
+        this.revisionDate = revisionDate;
+        this.dealName = dealName;
+        this.dealType = dealType;
+        this.sourceListId = sourceListId;
+        this.side = side;
     }
+
+
 
     //getters et setters
     public Integer getBidListId() {
