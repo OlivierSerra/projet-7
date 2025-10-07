@@ -36,6 +36,8 @@ public class CurvePointServiceImpl implements CurvePointService {
         e.setId(curvePoint.getId());
         e.setTerm(curvePoint.getTerm());
         e.setValue(curvePoint.getValue());
+        e.setCreationDate(curvePoint.getCreationDate());
+        e.setAsOfDate(curvePoint.getAsOfDate());
         return repo.save(e);
     }
 

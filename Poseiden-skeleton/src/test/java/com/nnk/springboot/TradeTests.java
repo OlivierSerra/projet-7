@@ -44,7 +44,7 @@ public class TradeTests {
 		Assert.assertEquals(0.0, trade.getSellPrice(), 0.01);
 		Assert.assertEquals("S&P500", trade.getBenchmark());
 		Assert.assertEquals(LocalDate.of(2025, 10, 6), trade.getTradeDate());
-		Assert.assertEquals("AAPL", trade.getTradeDate());
+		Assert.assertEquals("AAPL", trade.getSecurity());
 		Assert.assertEquals("Open", trade.getStatus());
 		Assert.assertEquals("Olivier Serra", trade.getTrader());
 		Assert.assertEquals("Book-XYZ", trade.getBook());
@@ -65,13 +65,9 @@ public class TradeTests {
 		Assert.assertEquals("ACC-1234", tradeUploaded.getAccount());
 		Assert.assertEquals("Equity", tradeUploaded.getType());
 		Assert.assertEquals(100, tradeUploaded.getBuyQuantity().intValue());
-		Assert.assertEquals("Type", tradeUploaded.getType());
-		Assert.assertEquals("ACC-1234", tradeUploaded.getAccount());
-		Assert.assertEquals("Equity", tradeUploaded.getType());
-		Assert.assertEquals(100, tradeUploaded.getBuyQuantity().intValue());
-		Assert.assertEquals(0.0, tradeUploaded.getSellQuantity());
-		Assert.assertEquals(152.75, tradeUploaded.getBuyPrice());
-		Assert.assertEquals(0.0, tradeUploaded.getSellPrice());
+		Assert.assertEquals(0.0, tradeUploaded.getSellQuantity(), 0.01);
+		Assert.assertEquals(152.75, tradeUploaded.getBuyPrice(), 0.01);
+		Assert.assertEquals(0.0, tradeUploaded.getSellPrice(), 0.01);
 		Assert.assertEquals("S&P500", tradeUploaded.getBenchmark());
 		Assert.assertEquals(LocalDate.of(2025, 10, 6), tradeUploaded.getTradeDate());
 		Assert.assertEquals("AAPL", tradeUploaded.getSecurity());
@@ -114,9 +110,9 @@ public class TradeTests {
 		Assert.assertEquals("ACC-9999", newTrade.getAccount());
 		Assert.assertEquals("actions", newTrade.getType());
 		Assert.assertEquals(200, newTrade.getBuyQuantity().intValue());
-		Assert.assertEquals(0.0, newTrade.getSellQuantity());
-		Assert.assertEquals(152, newTrade.getBuyPrice());
-		Assert.assertEquals(2.0, newTrade.getSellPrice());
+		Assert.assertEquals(0.0, newTrade.getSellQuantity(), 0.01);
+		Assert.assertEquals(152, newTrade.getBuyPrice(),0.01);
+		Assert.assertEquals(2.0, newTrade.getSellPrice(), 0.01);
 		Assert.assertEquals("CAC40", newTrade.getBenchmark());
 		Assert.assertEquals(LocalDate.of(2025, 10, 5), newTrade.getTradeDate());
 		Assert.assertEquals("AAPC", newTrade.getSecurity());
@@ -128,7 +124,7 @@ public class TradeTests {
 		Assert.assertEquals("Sylvie Serra", newTrade.getRevisionName());
 		Assert.assertEquals(LocalDate.of(2025, 10, 5), newTrade.getRevisionDate());
 		Assert.assertEquals("Deal-2025-02", newTrade.getDealName());
-		Assert.assertEquals("Sell", newTrade.getDealType());
+		Assert.assertEquals("sell", newTrade.getDealType());
 		Assert.assertEquals("SRC-002", newTrade.getSourceListId());
 		Assert.assertEquals("Sell", newTrade.getSide());
 

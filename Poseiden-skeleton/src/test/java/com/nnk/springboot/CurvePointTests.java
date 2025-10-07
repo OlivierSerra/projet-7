@@ -23,15 +23,15 @@ public class CurvePointTests {
 
 	@Test
 	public void curvePointTest() {
-		CurvePoint curvePoint = new CurvePoint(10, 100, 300, LocalDate.of(4, 10, 2025));
+		CurvePoint curvePoint = new CurvePoint(10, 100, 300, LocalDate.of(2025, 10, 4), LocalDate.of(2025, 10, 4));
 
 		// Save
 		curvePoint = curvePointRepository.save(curvePoint);
 		Assert.assertNotNull(curvePoint.getId());
 		Assert.assertTrue(curvePoint.getCurveId() == 10);
 		Assert.assertEquals(10, curvePoint.getCurveId().intValue());
-		Assert.assertEquals(10d, curvePoint.getTerm(), 0.01);
-		Assert.assertEquals(30d, curvePoint.getValue(), 0.01);
+		Assert.assertEquals(100, curvePoint.getTerm(), 0.01);
+		Assert.assertEquals(300, curvePoint.getValue(), 0.01);
 
 		//Read
 		//List<CurvePoint> curvePoints = curvePointRepository.findAll();
@@ -40,20 +40,20 @@ public class CurvePointTests {
 		Optional<CurvePoint> newIdentifiant = curvePointRepository.findById(curvePoint.getId());
 		Assert.assertTrue(newIdentifiant.isPresent());
 		CurvePoint newCurvePoint = newIdentifiant.get();
-		Assert.assertEquals(10d, newCurvePoint.getTerm(), 0.01);
-		Assert.assertEquals(30d, newCurvePoint.getValue(), 0.01);
+		Assert.assertEquals(100, newCurvePoint.getTerm(), 0.01);
+		Assert.assertEquals(300, newCurvePoint.getValue(), 0.01);
 
 		// Update
 		newCurvePoint.setCurveId(20);
 		newCurvePoint = curvePointRepository.save(curvePoint);
 		Assert.assertEquals(10, newCurvePoint.getCurveId().intValue());
 
-		newCurvePoint.setTerm(10d);
-		newCurvePoint.setValue(30d);
+		newCurvePoint.setTerm(100);
+		newCurvePoint.setValue(300);
 		newCurvePoint = curvePointRepository.save(curvePoint);
 
-		Assert.assertEquals(10d, newCurvePoint.getTerm(), 0.01);
-		Assert.assertEquals(30d, curvePoint.getValue(), 0.01);
+		Assert.assertEquals(100, newCurvePoint.getTerm(), 0.01);
+		Assert.assertEquals(300, curvePoint.getValue(), 0.01);
 
 		// Find
 		List<CurvePoint> listResult = curvePointRepository.findAll();

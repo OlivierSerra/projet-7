@@ -45,11 +45,12 @@ public class CurvePoint {
 
     }
 
-    public CurvePoint(Integer curveId, double term, double value, LocalDate creationDate) {
+    public CurvePoint(Integer curveId, double term, double value, LocalDate creationDate, LocalDate asOfDate) {
         this.curveId = curveId;
         this.term = term;
         this.value = value;
         this.creationDate = creationDate;
+        this.asOfDate = asOfDate;
     }
 
     //getters & setters
