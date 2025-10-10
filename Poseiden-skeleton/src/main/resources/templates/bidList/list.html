@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
@@ -8,14 +8,22 @@
 </head>
 <body>
 <div class="container">
-	<div class="col-6 text-right">
-		<a th:href="@{/}">Home</a>&nbsp;|&nbsp;
-		<a th:href="@{/login}">Login</a> |&nbsp;
-		<a th:href="@{/bidList/list}">bidList</a> |&nbsp;
-		<a th:href="@{/curvePoint/list}">curvePoint</a> |&nbsp;
-		<a th:href="@{/rating/list}">ratings</a> |&nbsp;
-		<a th:href="@{/ruleName/list}">ruleName</a> |&nbsp;
-		<a th:href="@{/trade/list}">trade</a>
+	<div class="row align-items-center mb-3">
+		<div class="col-6 text-right">
+			<a th:href="@{/}">Home</a>&nbsp;|&nbsp;
+			<a th:href="@{/login}">Login</a> |&nbsp;
+			<a th:href="@{/bidList/list}">bidList</a> |&nbsp;
+			<a th:href="@{/curvePoint/list}">curvePoint</a> |&nbsp;
+			<a th:href="@{/rating/list}">ratings</a> |&nbsp;
+			<a th:href="@{/ruleName/list}">ruleName</a> |&nbsp;
+			<a th:href="@{/trade/list}">trade</a>
+		</div>
+		<div class="col-6 text-end" sec:authorize="isAuthenticated()">
+			Logged in user: <b sec:authentication="name"></b>
+			<form th:action="@{/app-logout}" method="post" >
+				<input type="submit" value="Logout" />
+			</form>
+		</div>
 	</div>
 	<div class="row"><h2>Bid List</h2></div>
 	<div class="row">

@@ -20,11 +20,11 @@
 			<a th:href="@{/ruleName/list}">ruleName</a> |&nbsp;
 			<a th:href="@{/trade/list}">trade</a>
 		</div>
-		<div class="col-6 text-right" sec:authorize="isAuthenticated()">
-			Logged in user: <b sec:authentication="name"></b>
-			<form th:action="@{/app-logout}" method="post">
-				<input type="submit" value="Logout"/>
-			</form>
+		<div class="float-end" sec:authorize="isAuthenticated()">
+				Logged in user: <b sec:authentication="name"></b>
+				<form th:action="@{/app-logout}" method="post">
+					<input type="submit" value="Logout"/>
+				</form>
 		</div>
 	</div>
 	<div class="row"><h2>Curve Point List</h2></div>
