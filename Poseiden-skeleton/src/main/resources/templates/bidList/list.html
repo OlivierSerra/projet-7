@@ -22,6 +22,7 @@
 		<a href="/bidList/add" class="btn btn-primary btn-sm">Add New</a>
 		<table class="table table-bordered">
 			<thead>
+			<!-- affiche l'entête du tabelau -->
 			<tr>
 				<th>bidListId</th>
 				<th>Account</th>
@@ -50,6 +51,7 @@
 			</tr>
 			</thead>
 			<tbody>
+			<!-- affiche les données correspondant à l'entête dans le tableau-->
 			<tr th:each="bidList : ${bidLists}">
 				<td style="width: 10%" th:text="${bidList.bidListId}"></td>
 				<td th:text="${bidList.account}"></td>
@@ -74,7 +76,8 @@
 				<td th:text="${bidList.sourceListId}"></td>
 				<td th:text="${bidList.side}"></td>
 				<td style="width: 15%" class="text-center">
-					<a th:href="@{/bidList/update/{id}(id=${bidList.bidListId})}">Edit</a>&nbsp;|&nbsp;
+					<!-- affiche les boutons pour update  -->
+					<a th:href="@{/bidList/update/{id}(id=${bidList.bidListId})}">update</a>&nbsp;|&nbsp;
 					<a th:href="@{/bidList/delete/{id}(id=${bidList.bidListId})}">Delete</a>
 				</td>
 			</tr>
@@ -83,6 +86,7 @@
 	</div>
 </div>
 
+<!-- affiche le logo en bas eà droite -->
 <footer style="position: fixed; bottom: 10px; right: 10px;">
 	<img src="/images/logo.png" alt="Poseidon Capital Solutions" style="width:120px;">
 </footer>

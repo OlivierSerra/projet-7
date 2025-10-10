@@ -54,7 +54,9 @@ public class SecurityConfig {
         return http.build();
     }
 
-    //sert à gérer des utilisateurs
+    /**
+     * Hsert à gérer des utilisateurs
+    */
     @Bean
     public UserDetailsService users(){
         UserDetails user = User.builder()

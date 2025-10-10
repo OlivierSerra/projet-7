@@ -15,6 +15,7 @@
 
 	<div class="row">
 		<form th:action="@{/bidList/validate}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
+			<!-- boite de dialogue pour insérer le num de compte-->
 			<div class="form-group">
 				<label for="account" class="col-sm-2 control-label">Account</label>
 				<div class="col-sm-10">
@@ -22,6 +23,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('account')}" th:errors="*{account}"></p>
 				</div>
 			</div>
+			<!-- boite de dialogue pour insérer le type de bid-->
 			<div class="form-group">
 				<label for="type" class="col-sm-2 control-label">Type</label>
 				<div class="col-sm-10">
@@ -29,6 +31,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></p>
 				</div>
 			</div>
+			<!-- boite de dialogue pour insérer la quanbtité de bid-->
 			<div class="form-group">
 				<label for="bidQuantity" class="col-sm-2 control-label">Bid Quantity</label>
 				<div class="col-sm-10">
@@ -37,6 +40,7 @@
 				</div>
 			</div>
 
+			<!-- boite de dialogue pour insérer la quanbtité de bid demandée-->
 			<div class="form-group">
 				<label for="askQuantity" class="col-sm-2 control-label">Ask Quantity</label>
 				<div class="col-sm-10">
@@ -44,7 +48,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('askQuantity')}" th:errors="*{askQuantity}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le prix de bid -->
 			<div class="form-group">
 				<label for="bid" class="col-sm-2 control-label">Bid</label>
 				<div class="col-sm-10">
@@ -52,7 +56,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('bid')}" th:errors="*{bid}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le prix de bid demadné-->
 			<div class="form-group">
 				<label for="ask" class="col-sm-2 control-label">Ask</label>
 				<div class="col-sm-10">
@@ -60,7 +64,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('ask')}" th:errors="*{ask}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le benchmark -->
 			<div class="form-group">
 				<label for="benchmark" class="col-sm-2 control-label">Benchmark</label>
 				<div class="col-sm-10">
@@ -68,7 +72,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('benchmark')}" th:errors="*{benchmark}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer la date d'acaht -->
 			<div class="form-group">
 				<label for="bidListDate" class="col-sm-2 control-label">bidList Date</label>
 				<div class="col-sm-10">
@@ -77,6 +81,7 @@
 				</div>
 			</div>
 
+			<!-- boite de dialogue pour insérer le commentaire-->
 			<div class="form-group">
 				<label for="commentary" class="col-sm-2 control-label">commentary</label>
 				<div class="col-sm-10">
@@ -85,6 +90,7 @@
 				</div>
 			</div>
 
+			<!-- boite de dialogue pour insérer le code de sécurité -->
 			<div class="form-group">
 				<label for="security" class="col-sm-2 control-label">Security</label>
 				<div class="col-sm-10">
@@ -92,7 +98,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('security')}" th:errors="*{security}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le status -->
 			<div class="form-group">
 				<label for="status" class="col-sm-2 control-label">Status</label>
 				<div class="col-sm-10">
@@ -100,7 +106,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le nom du trader -->
 			<div class="form-group">
 				<label for="trader" class="col-sm-2 control-label">trader</label>
 				<div class="col-sm-10">
@@ -108,7 +114,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('trader')}" th:errors="*{trader}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le nom dans le book -->
 			<div class="form-group">
 				<label for="book" class="col-sm-2 control-label">book</label>
 				<div class="col-sm-10">
@@ -116,7 +122,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('book')}" th:errors="*{book}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le créationName -->
 			<div class="form-group">
 				<label for="creationName" class="col-sm-2 control-label">creationName</label>
 				<div class="col-sm-10">
@@ -124,7 +130,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('creationName')}" th:errors="*{creationName}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer la date de création-->
 			<div class="form-group">
 				<label for="creationDate" class="col-sm-2 control-label">Creation Date</label>
 				<div class="col-sm-10">
@@ -132,7 +138,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('creationDate')}" th:errors="*{creationDate}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le nom de la révision -->
 			<div class="form-group">
 				<label for="revisionName" class="col-sm-2 control-label">revision Name</label>
 				<div class="col-sm-10">
@@ -140,7 +146,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('revisionName')}" th:errors="*{revisionName}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer la date de al révision-->
 			<div class="form-group">
 				<label for="revisionDate" class="col-sm-2 control-label">Revision Date</label>
 				<div class="col-sm-10">
@@ -148,7 +154,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('revisionDate')}" th:errors="*{revisionDate}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le nom du deal -->
 			<div class="form-group">
 				<label for="dealName" class="col-sm-2 control-label">deal Name</label>
 				<div class="col-sm-10">
@@ -156,7 +162,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('dealName')}" th:errors="*{dealName}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le type de deal  -->
 			<div class="form-group">
 				<label for="dealType" class="col-sm-2 control-label">deal Type</label>
 				<div class="col-sm-10">
@@ -164,7 +170,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('dealType')}" th:errors="*{dealType}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le n0Id de la liste source -->
 			<div class="form-group">
 				<label for="sourceListId" class="col-sm-2 control-label">sourceList Id</label>
 				<div class="col-sm-10">
@@ -172,7 +178,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('sourceListId')}" th:errors="*{sourceListId}"></p>
 				</div>
 			</div>
-
+			<!-- boite de dialogue pour insérer le side-->
 			<div class="form-group">
 				<label for="side" class="col-sm-2 control-label">Side</label>
 				<div class="col-sm-10">
@@ -181,9 +187,10 @@
 				</div>
 			</div>
 
-
+			<!-- Permet d'empêcher les attaques et sécurosé les formulaires -->
 			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
+			<!-- Permet de faire fonctionner le bouton Cancel -->
 			<div class="form-group">
 				<div class="col-sm-12">
 					<a class="btn btn-danger btn-sm" href="/bidList/list">Cancel</a>
@@ -194,6 +201,8 @@
 	</div>
 
 </div>
+
+<!-- affiche le logo en bas eà droite -->
 
 <footer style="position: fixed; bottom: 10px; right: 10px;">
 	<img src="/images/logo.png" alt="Poseidon Capital Solutions" style="width:120px;">

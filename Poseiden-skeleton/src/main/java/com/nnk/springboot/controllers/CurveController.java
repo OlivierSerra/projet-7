@@ -12,22 +12,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 
+/**
+ * prise en charge des courbes des points d'inflexion
+ */
 @Controller
 @RequestMapping("/curvePoint")
 public class CurveController {
     // TODO: Inject Curve Point service
-
+    /**
+     *
+     */
     private final CurvePointService curvePointService;
 
     public CurveController(CurvePointService curvePointService){
         this.curvePointService = curvePointService;
     }
 
+    /**
+     * affhce la liste des points d'inlfexion
+     * @return liste
+     */
     @GetMapping
         public String rootDirect(){
         return "redirect:/curvePoint/list";
     }
 
+    /**
+     * affiche les points d'inflexion
+     * @param model
+     * @return List of cuvePoint
+     */
     @GetMapping("/list")
     public String home(Model model)
     {
@@ -37,11 +51,24 @@ public class CurveController {
         return "curvePoint/list";
     }
 
+    /**
+     * affiche page ajout point d'infelxion
+     * @param model
+     * @return
+     */
     @GetMapping("/add")
     public String addForm(Model model) {
         model.addAttribute("curvePoint", new CurvePoint());
         return "curvePoint/add";
 }
+
+    /**
+     * affiche page validation
+     * @param curvePoint
+     * @param result
+     * @param model
+     * @return
+     */
     @PostMapping("/validate")
     public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Curve list**
@@ -52,6 +79,12 @@ public class CurveController {
         return "redirect:/curvePoint/list";
     }
 
+    /**
+     * MAJ des points d'inflexions
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get CurvePoint by Id and to model then show to the form**
@@ -59,11 +92,19 @@ public class CurveController {
         return "curvePoint/update";
     }
 
+    /**
+     * MAJ des CurvePoint existantes avec les données fournies
+     * @param id
+     * @param curvePoint
+     * @param result
+     * @param model
+     * @return
+     */
     @PostMapping("/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Curve and return Curve list
-        if (result.hasErrors()) return "/curvePoint/update";
+        if (result.hasErrors()) return "curvePoint/update";
         CurvePoint existing = curvePointService.findById(id);
         existing.setCurveId(curvePoint.getCurveId());
         existing.setTerm(curvePoint.getTerm());
@@ -74,6 +115,12 @@ public class CurveController {
         return "redirect:/curvePoint/list";
     }
 
+    /**
+     * suppr de point d'inflexion
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Curve by Id and delete the Curve, return to Curve list

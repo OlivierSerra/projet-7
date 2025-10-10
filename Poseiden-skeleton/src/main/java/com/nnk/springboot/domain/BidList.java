@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,12 +14,18 @@ import java.time.LocalDate;
 @Table(name = "bidlist")
 public class BidList {
     // TODO: Map columns in data table BIDLIST with corresponding java fields
+    /**
+     * déclaration des varaibles
+     */
+
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Integer bidListId;
     private String account;
     private String type;
+    @DecimalMin(value = "0.0", inclusive = false)
     private double bidQuantity;
+    @DecimalMin(value = "0.0", inclusive = false)
     private double askQuantity;
     private double bid;
     private double ask;
@@ -42,8 +49,15 @@ public class BidList {
     private String side;
 
     //Constructeurs*
+
+    /**
+     * constructeurs vides
+     */
     public BidList(){}
 
+    /**
+     * constructeurs pleins
+     */
 
     public BidList(Integer bidListId, String account, String type, double bidQuantity,
                    double askQuantity, double bid, double ask, String benchmark,
@@ -74,8 +88,6 @@ public class BidList {
         this.sourceListId = sourceListId;
         this.side = side;
     }
-
-
 
     //getters et setters
     public Integer getBidListId() {

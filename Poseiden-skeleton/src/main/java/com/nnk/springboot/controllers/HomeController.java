@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.nnk.springboot.services.BidListServiceImpl;
 
+/**
+ * utile pour afficher le bidListService
+ */
 @Controller
 public class HomeController
 {
